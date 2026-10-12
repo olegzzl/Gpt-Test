@@ -272,15 +272,20 @@ header nav a:hover{color:#354e3a;transform:translateY(-1px);border-color:rgba(82
 .sound-toggle[aria-pressed="true"]:before{background:#557e4f;box-shadow:0 0 0 3px rgba(85,126,79,.15),0 0 12px rgba(85,126,79,.35)}
 @media(max-width:700px){.tea-dose{grid-template-columns:1fr;margin:0 0 42px;padding:23px;gap:18px}.dose-control{padding:18px}}
 
+
+/* Hero image: Chinese Yixing teapot on a wooden tea tray */
+.hero-photo-art{overflow:hidden}
+.hero-tea-photo{object-position:center 54%}
+
 </style>
 </head>
 <body id="top">
 <header><a class="brand" href="#top">茶　ПУТЬ ЧАЯ</a><nav><a href="#philosophy">Философия</a><a href="#tea">Чай</a><a href="#ritual">Ритуал</a></nav></header><div class="tea-settings" aria-hidden="true"><label for="lightSelect">ОСВЕЩЕНИЕ <select id="lightSelect"><option value="morning">Утренний свет</option><option value="day">Дневной свет</option><option value="evening">Вечерний сумрак</option></select></label><button class="mode-button" id="rainToggle" type="button" aria-pressed="false">☂ Дождливый вечер</button><button class="mode-button" id="focusToggle" type="button" aria-pressed="false">◌ Полное погружение</button></div>
 <main>
 <section class="hero"><div class="hero-copy"><small class="eyebrow">Место тишины и вкуса</small><h1>Чайная<br><em>церемония</em></h1><p class="intro">Не торопиться. Замечать простое. Позволить теплу чашки вернуть вас в настоящий момент.</p><a class="hero-link" href="#ritual">ОТКРЫТЬ РИТУАЛ　↗</a></div>
-<div class="art hero-photo-art"><img class="hero-tea-photo" src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&amp;fit=crop&amp;w=1400&amp;q=88" alt="Эстетичная чайная композиция с керамической посудой" fetchpriority="high"><div class="photo-caption"><span>ЧАЙНЫЙ РИТУАЛ</span><span>01 — ПРИСУТСТВИЕ</span></div></div>
+<div class="art hero-photo-art"><img class="hero-tea-photo" src="https://images.unsplash.com/photo-1565711013423-4940da27415f?auto=format&amp;fit=crop&amp;crop=center&amp;w=1400&amp;q=88" alt="Китайский чайник из исинской глины на деревянной чайной доске" fetchpriority="high"><div class="photo-caption"><span>ЧАЙНЫЙ РИТУАЛ</span><span>01 — ПРИСУТСТВИЕ</span></div></div>
 <div class="band">ПРИСУТСТВИЕ　✳　ПРОСТОТА　✳　ГАРМОНИЯ</div>
-<section id="philosophy" class="reveal" style="padding-top:70px"><div class="section-head"><small>Суть традиции</small><h2>Красота в простом</h2><p>Чайная церемония — это внимательное отношение к каждому движению, предмету и человеку рядом. Пусть несколько минут станут пространством, где не нужно спешить.</p></div></section>
+
 <section class="tea-dose" aria-label="Настройте количество чая"><div class="dose-copy"><small>ТОЧНОСТЬ — ДЕЛО ВКУСА</small><h2>Сколько дзена<br>добавим в чашку?</h2><p>Двигайте бегунок. Наука пока спорит, но чайник уже впечатлён.</p></div><div class="dose-control"><div class="dose-value"><span>Количество чая</span><strong><output id="teaDoseValue" for="teaDose">6 г</output></strong></div><input id="teaDose" type="range" min="2" max="16" step="1" value="6" aria-label="Количество чая в граммах"><div class="dose-scale"><span>Едва заметно</span><span>По-императорски</span></div><p class="dose-joke" id="teaDoseJoke" aria-live="polite">Идеально для спокойного созерцания.</p></div></section>
 
 
@@ -301,7 +306,7 @@ header nav a:hover{color:#354e3a;transform:translateY(-1px);border-color:rgba(82
 </main>
 <section class="quote reveal" id="contact">«В одном мгновении — целый мир.<br>В одной чашке — время для себя».</section>
 <footer><span>© 2026 · ЧАЙНАЯ ЦЕРЕМОНИЯ</span><span>一期一会 · Один момент</span><a class="text-link" href="#top">НАВЕРХ ↑</a></footer>
-<button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false">♫ ТИХИЙ ЗВУК: ВЫКЛ.</button>
+<button class="sound-toggle" id="soundToggle" type="button" aria-pressed="true">♫ ВЫКЛЮЧИТЬ МЕЛОДИЮ</button>
 <script>
 (()=>{const data={sencha:{name:"Сенча",temp:"70–80 °C",duration:90,text:"Свежий аромат раскрывается постепенно. Дайте листьям немного пространства."},matcha:{name:"Матча",temp:"70–80 °C",duration:60,text:"Взбейте чай до мягкой пены. Наблюдайте, как поверхность становится шелковистой."},gyokuro:{name:"Гёкуро",temp:"50–60 °C",duration:110,text:"Более прохладная вода помогает сохранить деликатную сладость и умами."},hojicha:{name:"Ходзича",temp:"80–90 °C",duration:45,text:"Обжаренный аромат напоминает орехи и тёплое дерево. Заваривайте недолго."}};
 let remaining=90,interval=null,running=false;const display=document.getElementById("timerDisplay"),title=document.getElementById("ritualTitle"),label=document.getElementById("ritualLabel"),description=document.getElementById("ritualText"),select=document.getElementById("teaSelect"),pause=document.getElementById("pauseTimer");
@@ -341,8 +346,13 @@ async function stopMelody(){
  if(audio&&audio.state!=="closed")await audio.suspend();
  soundButton.textContent="♫ ВКЛЮЧИТЬ МЕЛОДИЮ";soundButton.setAttribute("aria-pressed","false");
 }
-soundButton.addEventListener("click",async()=>{if(melodyTimer)await stopMelody();else{try{await startMelody()}catch(e){soundButton.textContent="♫ НАЖМИТЕ ДЛЯ МУЗЫКИ"}}});
-try{startMelody().catch(()=>{soundButton.textContent="♫ ВКЛЮЧИТЬ МЕЛОДИЮ"})}catch(e){soundButton.textContent="♫ ВКЛЮЧИТЬ МЕЛОДИЮ"}
+let soundWanted=true;
+soundButton.setAttribute("aria-pressed","true");soundButton.textContent="♫ ВЫКЛЮЧИТЬ МЕЛОДИЮ";
+soundButton.addEventListener("click",async()=>{if(soundWanted){soundWanted=false;await stopMelody()}else{soundWanted=true;soundButton.setAttribute("aria-pressed","true");soundButton.textContent="♫ ВЫКЛЮЧИТЬ МЕЛОДИЮ";try{await startMelody()}catch(e){}}});
+async function unlockRequestedSound(){if(!soundWanted||melodyTimer)return;try{await startMelody()}catch(e){}}
+window.addEventListener("pointerdown",unlockRequestedSound,{once:true,passive:true});
+window.addEventListener("keydown",unlockRequestedSound,{once:true});
+try{startMelody().catch(()=>{soundButton.setAttribute("aria-pressed","true");soundButton.textContent="♫ ВЫКЛЮЧИТЬ МЕЛОДИЮ"})}catch(e){soundButton.setAttribute("aria-pressed","true");soundButton.textContent="♫ ВЫКЛЮЧИТЬ МЕЛОДИЮ"}
 
 const dose=document.getElementById("teaDose"),doseValue=document.getElementById("teaDoseValue"),doseJoke=document.getElementById("teaDoseJoke");
 function updateDose(){const n=Number(dose.value),pct=((n-2)/14)*100;dose.style.setProperty("--dose-progress",pct+"%");doseValue.textContent=n+" г";doseJoke.textContent=n<=3?"Минимализм. Чайный лист почти шепчет.":n<=6?"Идеально для спокойного созерцания.":n<=9?"Крепкий характер. Самурай одобряет.":n<=12?"Это уже не чай, а сюжетный поворот.":"Чайный дракон проснулся. Добавьте воды и уважения."; }
