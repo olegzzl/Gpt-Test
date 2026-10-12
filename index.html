@@ -206,6 +206,46 @@ button:active,.primary:active,.secondary:active,.mode-button:active,.tea button:
  #tea .tea-photo-grid .tea button{font-size:9px;line-height:1.5}
 }
 
+
+/* Quiet tactile paper texture — no bamboo or horizontal wood grain */
+body{
+ background-color:#e9dfc8!important;
+ background-image:
+ radial-gradient(ellipse at 18% 8%,rgba(255,253,241,.85),transparent 42%),
+ radial-gradient(ellipse at 84% 36%,rgba(193,167,122,.16),transparent 48%),
+ radial-gradient(ellipse at 50% 100%,rgba(255,250,231,.62),transparent 60%),
+ repeating-radial-gradient(ellipse at 20% 30%,rgba(115,91,57,.025) 0 1px,transparent 1px 4px),
+ linear-gradient(135deg,#eee5d2,#e5d9bf 54%,#f0e7d4)!important;
+ background-attachment:fixed!important;
+}
+body:before{
+ background-image:radial-gradient(ellipse at 15% 12%,rgba(255,255,238,.35),transparent 45%),repeating-radial-gradient(circle at 70% 60%,rgba(101,79,51,.025) 0 .6px,transparent .8px 4px)!important;
+ opacity:.8;
+}
+header{gap:24px;padding-top:20px;padding-bottom:20px}
+header nav{gap:9px}
+header nav a{
+ display:inline-flex;align-items:center;justify-content:center;
+ min-height:39px;min-width:104px;box-sizing:border-box;padding:0 14px;
+ border:1px solid rgba(113,94,62,.22);border-radius:5px;
+ background:linear-gradient(145deg,rgba(255,253,242,.78),rgba(232,222,199,.46));
+ box-shadow:0 3px 0 rgba(93,75,48,.10),0 7px 15px rgba(73,55,32,.06),inset 0 1px 0 rgba(255,255,255,.8);
+ font-size:10px;letter-spacing:.08em;white-space:nowrap;
+}
+header nav a:hover{color:#354e3a;transform:translateY(-1px);border-color:rgba(82,102,77,.45);box-shadow:0 5px 0 rgba(93,75,48,.08),0 10px 20px rgba(73,55,32,.1),inset 0 1px 0 #fff}
+.sound-toggle{
+ background:linear-gradient(145deg,rgba(255,253,243,.91),rgba(220,230,208,.84))!important;
+ border:1px solid rgba(255,255,255,.92)!important;border-radius:7px!important;
+ box-shadow:0 4px 0 rgba(71,91,64,.15),0 12px 30px rgba(48,61,41,.17),inset 0 1px 0 #fff!important;
+ padding:14px 18px!important;font-weight:700!important;letter-spacing:.07em!important;
+}
+.sound-toggle:hover{transform:translateY(-2px);box-shadow:0 6px 0 rgba(71,91,64,.12),0 16px 35px rgba(48,61,41,.2),inset 0 1px 0 #fff!important}
+@media(max-width:700px){
+ header{align-items:center;gap:12px;flex-wrap:wrap}
+ header nav{width:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+ header nav a{min-width:0;width:100%;padding:0 5px;font-size:9px;letter-spacing:.03em}
+}
+
 </style>
 </head>
 <body id="top">
@@ -215,7 +255,7 @@ button:active,.primary:active,.secondary:active,.mode-button:active,.tea button:
 <div class="art hero-photo-art"><img class="hero-tea-photo" src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&amp;fit=crop&amp;w=1400&amp;q=88" alt="Эстетичная чайная композиция с керамической посудой" fetchpriority="high"><div class="photo-caption"><span>ЧАЙНЫЙ РИТУАЛ</span><span>01 — ПРИСУТСТВИЕ</span></div></div>
 <div class="band">ПРИСУТСТВИЕ　✳　ПРОСТОТА　✳　ГАРМОНИЯ</div>
 <section id="philosophy" class="reveal" style="padding-top:70px"><div class="section-head"><small>Суть традиции</small><h2>Красота в простом</h2><p>Чайная церемония — это внимательное отношение к каждому движению, предмету и человеку рядом. Пусть несколько минут станут пространством, где не нужно спешить.</p></div></section>
-<section class="cards reveal" aria-label="Три шага чайного ритуала"><article class="card"><small>01 / ВОДА</small><h2>Подготовиться</h2><p>Почувствуйте тепло чайника, услышьте воду и оставьте спешку за порогом.</p></article><article class="card"><small>02 / ЛИСТ</small><h2>Заварить</h2><p>Дайте листьям раскрыться. Наблюдайте за цветом, ароматом и тихим движением пара.</p></article><article class="card"><small>03 / МОМЕНТ</small><h2>Присутствовать</h2><p>Сделайте небольшой глоток. Здесь не нужно ничего достигать — достаточно быть.</p></article></section>
+
 <section id="tea" class="reveal"><div class="section-head"><small>Листья и характер</small><h2>Найдите свой чай</h2><p>У каждого сорта — свой аромат, настроение и способ раскрыться.</p></div><div class="tea-grid tea-photo-grid">
 <article class="tea"><img class="tea-photo" src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Чайник и чашка чая в тёплом естественном свете" loading="lazy" decoding="async"><div class="tea-card-copy"><span class="tea-tag">ЗЕЛЁНЫЙ ЧАЙ · ЯПОНИЯ</span><h3>Сенча</h3><p>Свежий травянистый вкус, лёгкая сладость и ясное послевкусие.</p><div class="tea-notes"><span>70–80 °C</span><span>1–2 мин</span></div><button type="button" data-tea="sencha">ЗАВАРИТЬ СЕНЧА ↗</button></div></article>
 <article class="tea"><img class="tea-photo" src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Чашка зелёного чая матча" loading="lazy" decoding="async"><div class="tea-card-copy"><span class="tea-tag">ПОРОШКОВЫЙ ЧАЙ · ЯПОНИЯ</span><h3>Матча</h3><p>Насыщенный зелёный чай с бархатистой текстурой и глубоким вкусом.</p><div class="tea-notes"><span>70–80 °C</span><span>Взбить до пены</span></div><button type="button" data-tea="matcha">ПРИГОТОВИТЬ МАТЧА ↗</button></div></article>
@@ -248,7 +288,34 @@ pause.addEventListener("click",()=>running?stop():start());
 document.getElementById("resetTimer").addEventListener("click",()=>{stop();remaining=data[select.value].duration;paint();title.textContent="Всё начинается с тишины";description.textContent="Выберите чай и начните свой небольшой ритуал."});
 paint();
 const items=document.querySelectorAll(".reveal");if("IntersectionObserver"in window){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("visible");observer.unobserve(entry.target)}}),{threshold:.12});items.forEach(item=>observer.observe(item))}else items.forEach(item=>item.classList.add("visible"));
-let audio=null;const soundButton=document.getElementById("soundToggle");soundButton.addEventListener("click",async()=>{if(audio&&audio.state!=="closed"){await audio.close();audio=null;soundButton.textContent="♫ ТИХИЙ ЗВУК: ВЫКЛ.";soundButton.setAttribute("aria-pressed","false");return}const Context=window.AudioContext||window.webkitAudioContext;if(!Context){soundButton.textContent="ЗВУК НЕДОСТУПЕН";return}audio=new Context();const osc=audio.createOscillator(),gain=audio.createGain(),filter=audio.createBiquadFilter();osc.type="sine";osc.frequency.value=174;filter.type="lowpass";filter.frequency.value=260;gain.gain.value=.008;osc.connect(filter);filter.connect(gain);gain.connect(audio.destination);osc.start();soundButton.textContent="♫ ТИХИЙ ЗВУК: ВКЛ.";soundButton.setAttribute("aria-pressed","true")});
+let audio=null,melodyTimer=null,melodyStep=0;const soundButton=document.getElementById("soundToggle");
+const notes=[523.25,659.25,783.99,659.25,587.33,783.99,1046.5,783.99,659.25,587.33,523.25,392,440,523.25,659.25,523.25];
+function playNote(){
+ if(!audio||audio.state!=="running")return;
+ const now=audio.currentTime,frequency=notes[melodyStep%notes.length];melodyStep++;
+ const osc=audio.createOscillator(),gain=audio.createGain(),filter=audio.createBiquadFilter();
+ osc.type="square";osc.frequency.setValueAtTime(frequency,now);
+ filter.type="lowpass";filter.frequency.value=1800;
+ gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(.018,now+.018);gain.gain.setValueAtTime(.012,now+.13);gain.gain.exponentialRampToValueAtTime(.0001,now+.24);
+ osc.connect(filter);filter.connect(gain);gain.connect(audio.destination);osc.start(now);osc.stop(now+.25);
+}
+async function startMelody(){
+ const Context=window.AudioContext||window.webkitAudioContext;
+ if(!Context){soundButton.textContent="ЗВУК НЕ ПОДДЕРЖИВАЕТСЯ";return}
+ if(!audio||audio.state==="closed")audio=new Context();
+ await audio.resume();
+ if(melodyTimer)clearInterval(melodyTimer);
+ playNote();melodyTimer=setInterval(playNote,300);
+ soundButton.textContent="♫ ВЫКЛЮЧИТЬ МЕЛОДИЮ";soundButton.setAttribute("aria-pressed","true");
+}
+async function stopMelody(){
+ if(melodyTimer){clearInterval(melodyTimer);melodyTimer=null}
+ if(audio&&audio.state!=="closed")await audio.suspend();
+ soundButton.textContent="♫ ВКЛЮЧИТЬ МЕЛОДИЮ";soundButton.setAttribute("aria-pressed","false");
+}
+soundButton.addEventListener("click",async()=>{if(melodyTimer)await stopMelody();else{try{await startMelody()}catch(e){soundButton.textContent="♫ НАЖМИТЕ ДЛЯ МУЗЫКИ"}}});
+try{startMelody().catch(()=>{soundButton.textContent="♫ ВКЛЮЧИТЬ МЕЛОДИЮ"})}catch(e){soundButton.textContent="♫ ВКЛЮЧИТЬ МЕЛОДИЮ"}
+
 
 const lightSelect=document.getElementById("lightSelect");lightSelect.addEventListener("change",()=>{document.body.dataset.light=lightSelect.value;if(lightSelect.value==="evening")document.body.dataset.rain="false";document.getElementById("rainToggle").setAttribute("aria-pressed",String(document.body.dataset.rain==="true"))});
 const rainToggle=document.getElementById("rainToggle");rainToggle.addEventListener("click",()=>{const on=document.body.dataset.rain!=="true";document.body.dataset.rain=String(on);if(on){lightSelect.value="evening";document.body.dataset.light="evening"}rainToggle.setAttribute("aria-pressed",String(on));rainToggle.textContent=on?"☂ Дождь: включён":"☂ Дождливый вечер"});
