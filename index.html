@@ -81,6 +81,24 @@ footer{padding-top:30px;padding-bottom:36px}
 @media(max-width:700px){header{padding:15px 20px;top:0}.tea-settings{top:48px}.hero{padding-top:36px}.art:hover{transform:none}.card:hover,.tea:hover{transform:translateY(-3px)}.experience:after{width:130px;height:130px;right:-50px;top:-40px}}
 @media(prefers-reduced-motion:reduce){.sun,.band:before{animation:none!important}}
 
+
+/* Editorial tea photography cards */
+.tea-photo-grid{align-items:stretch;gap:18px}
+.tea-photo-grid .tea{padding:0;display:flex;flex-direction:column;background:rgba(250,246,235,.86);border-radius:4px}
+.tea-photo{display:block;width:100%;height:clamp(145px,18vw,205px);object-fit:cover;margin:0;filter:saturate(.82) contrast(.98);transition:transform .65s cubic-bezier(.2,.8,.2,1),filter .5s}
+.tea-photo-grid .tea{isolation:isolate}
+.tea-photo-grid .tea:before{z-index:1;opacity:.18;background:linear-gradient(180deg,rgba(31,43,32,0),rgba(31,43,32,.12))}
+.tea-photo-grid .tea:hover .tea-photo{transform:scale(1.045);filter:saturate(1) contrast(1.02)}
+.tea-card-copy{position:relative;z-index:2;padding:19px 19px 21px;display:flex;flex-direction:column;align-items:flex-start;flex:1}
+.tea-tag{font:9px/1.5 Arial,sans-serif;letter-spacing:.13em;color:#8b6448}
+.tea-photo-grid .tea h3{margin:10px 0 7px;font-size:26px}
+.tea-photo-grid .tea p{font:13px/1.7 Arial,sans-serif;min-height:66px;margin:0 0 14px;color:var(--muted)}
+.tea-notes{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 13px}
+.tea-notes span{padding:6px 8px;border:1px solid rgba(121,99,66,.2);border-radius:99px;background:rgba(231,221,198,.35);font:9px Arial,sans-serif;letter-spacing:.04em;color:#5f6958}
+.tea-photo-grid .tea button{margin-top:auto;text-align:left;font-size:10px}
+@media(min-width:701px){.tea-photo-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:700px){.tea-photo{height:205px}.tea-photo-grid .tea p{min-height:0}.tea-card-copy{padding:18px}}
+
 </style>
 </head>
 <body id="top">
@@ -91,11 +109,11 @@ footer{padding-top:30px;padding-bottom:36px}
 <div class="band">ПРИСУТСТВИЕ　✳　ПРОСТОТА　✳　ГАРМОНИЯ</div>
 <section id="philosophy" class="reveal" style="padding-top:70px"><div class="section-head"><small>Суть традиции</small><h2>Красота в простом</h2><p>Чайная церемония — это внимательное отношение к каждому движению, предмету и человеку рядом. Пусть несколько минут станут пространством, где не нужно спешить.</p></div></section>
 <section class="cards reveal" aria-label="Три шага чайного ритуала"><article class="card"><small>01 / ВОДА</small><h2>Подготовиться</h2><p>Почувствуйте тепло чайника, услышьте воду и оставьте спешку за порогом.</p></article><article class="card"><small>02 / ЛИСТ</small><h2>Заварить</h2><p>Дайте листьям раскрыться. Наблюдайте за цветом, ароматом и тихим движением пара.</p></article><article class="card"><small>03 / МОМЕНТ</small><h2>Присутствовать</h2><p>Сделайте небольшой глоток. Здесь не нужно ничего достигать — достаточно быть.</p></article></section>
-<section id="tea" class="reveal"><div class="section-head"><small>Листья и характер</small><h2>Найдите свой чай</h2><p>У каждого сорта — свой аромат, настроение и способ раскрыться.</p></div><div class="tea-grid">
-<article class="tea"><span class="leaf-icon">✳</span><h3>Сенча</h3><p>Свежий травянистый вкус, лёгкая сладость и ясное послевкусие.</p><button type="button" data-tea="sencha">ЗАВАРИТЬ СЕНЧА ↗</button></article>
-<article class="tea"><span class="leaf-icon">◉</span><h3>Матча</h3><p>Насыщенный зелёный чай с бархатистой текстурой и глубоким вкусом.</p><button type="button" data-tea="matcha">ПРИГОТОВИТЬ МАТЧА ↗</button></article>
-<article class="tea"><span class="leaf-icon">❋</span><h3>Гёкуро</h3><p>Нежный умами и мягкая сладость. Чай для неторопливого внимания.</p><button type="button" data-tea="gyokuro">ЗАВАРИТЬ ГЁКУРО ↗</button></article>
-<article class="tea"><span class="leaf-icon">☼</span><h3>Ходзича</h3><p>Обжаренные листья, тёплый ореховый аромат и спокойный характер.</p><button type="button" data-tea="hojicha">ЗАВАРИТЬ ХОДЗИЧА ↗</button></article>
+<section id="tea" class="reveal"><div class="section-head"><small>Листья и характер</small><h2>Найдите свой чай</h2><p>У каждого сорта — свой аромат, настроение и способ раскрыться.</p></div><div class="tea-grid tea-photo-grid">
+<article class="tea"><img class="tea-photo" src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Чайник и чашка чая в тёплом естественном свете" loading="lazy" decoding="async"><div class="tea-card-copy"><span class="tea-tag">ЗЕЛЁНЫЙ ЧАЙ · ЯПОНИЯ</span><h3>Сенча</h3><p>Свежий травянистый вкус, лёгкая сладость и ясное послевкусие.</p><div class="tea-notes"><span>70–80 °C</span><span>1–2 мин</span></div><button type="button" data-tea="sencha">ЗАВАРИТЬ СЕНЧА ↗</button></div></article>
+<article class="tea"><img class="tea-photo" src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Чашка зелёного чая матча" loading="lazy" decoding="async"><div class="tea-card-copy"><span class="tea-tag">ПОРОШКОВЫЙ ЧАЙ · ЯПОНИЯ</span><h3>Матча</h3><p>Насыщенный зелёный чай с бархатистой текстурой и глубоким вкусом.</p><div class="tea-notes"><span>70–80 °C</span><span>Взбить до пены</span></div><button type="button" data-tea="matcha">ПРИГОТОВИТЬ МАТЧА ↗</button></div></article>
+<article class="tea"><img class="tea-photo" src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Традиционная подача зелёного чая" loading="lazy" decoding="async"><div class="tea-card-copy"><span class="tea-tag">ТЕНЕВОЙ ЧАЙ · ЯПОНИЯ</span><h3>Гёкуро</h3><p>Нежный умами и мягкая сладость. Чай для неторопливого внимания.</p><div class="tea-notes"><span>50–60 °C</span><span>1,5–2 мин</span></div><button type="button" data-tea="gyokuro">ЗАВАРИТЬ ГЁКУРО ↗</button></div></article>
+<article class="tea"><img class="tea-photo" src="https://images.unsplash.com/photo-1563911892437-1feda0179e1b?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Чайная посуда и заваренный чай в спокойных натуральных тонах" loading="lazy" decoding="async"><div class="tea-card-copy"><span class="tea-tag">ОБЖАРЕННЫЙ ЧАЙ · ЯПОНИЯ</span><h3>Ходзича</h3><p>Обжаренные листья, тёплый ореховый аромат и спокойный характер.</p><div class="tea-notes"><span>80–90 °C</span><span>30–60 сек</span></div><button type="button" data-tea="hojicha">ЗАВАРИТЬ ХОДЗИЧА ↗</button></div></article>
 </div></section>
 <section id="ritual" class="experience reveal"><div class="section-head"><small>Ваш момент</small><h2>Маленький чайный ритуал</h2><p>Выберите чай, приготовьте воду и уделите себе несколько минут. Температура и время — ориентиры: следуйте рекомендациям для конкретного чая.</p></div><div class="experience-grid">
 <div class="controls"><label><span class="field-label">Выберите чай</span><select class="select" id="teaSelect"><option value="sencha">Сенча · 70–80 °C · 1–2 минуты</option><option value="matcha">Матча · 70–80 °C · взбить до пены</option><option value="gyokuro">Гёкуро · 50–60 °C · 1,5–2 минуты</option><option value="hojicha">Ходзича · 80–90 °C · 30–60 секунд</option></select></label><button class="primary" id="brewButton" type="button">НАЧАТЬ РИТУАЛ</button><p class="sound-note">Устройтесь удобно. Пока чай заваривается, обратите внимание на дыхание и тепло чашки.</p></div>
