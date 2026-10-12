@@ -99,13 +99,68 @@ footer{padding-top:30px;padding-bottom:36px}
 @media(min-width:701px){.tea-photo-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:700px){.tea-photo{height:205px}.tea-photo-grid .tea p{min-height:0}.tea-card-copy{padding:18px}}
 
+
+/* Refined glass controls, real photography, shorter editorial page */
+:root{--button-glass:rgba(255,252,241,.55)}
+button,.primary,.secondary,.mode-button,.tea button{border-radius:5px}
+button,.primary,.secondary,.mode-button{
+ position:relative;isolation:isolate;overflow:hidden;
+ backdrop-filter:blur(14px) saturate(1.18);
+ -webkit-backdrop-filter:blur(14px) saturate(1.18);
+ transition:transform .22s ease,box-shadow .22s ease,background .22s ease,border-color .22s ease;
+}
+.primary,.tea button{
+ border:1px solid rgba(255,255,255,.42);
+ background:linear-gradient(145deg,rgba(93,122,91,.91),rgba(49,75,56,.93));
+ color:#fff9e9;
+ box-shadow:0 8px 0 rgba(40,59,43,.2),0 12px 25px rgba(44,66,47,.2),inset 0 1px 0 rgba(255,255,255,.35);
+ text-shadow:0 1px 1px rgba(20,35,23,.2);
+}
+.primary{padding:15px 21px}
+.tea button{padding:10px 12px;border-radius:4px}
+.secondary,.mode-button{
+ background:linear-gradient(145deg,rgba(255,253,243,.8),rgba(228,221,199,.58));
+ border:1px solid rgba(255,255,255,.8);
+ box-shadow:0 5px 0 rgba(105,92,66,.13),0 8px 18px rgba(76,61,39,.1),inset 0 1px 0 rgba(255,255,255,.9);
+}
+button:after,.primary:after,.secondary:after,.mode-button:after{
+ content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+ background:linear-gradient(115deg,rgba(255,255,255,.24),transparent 43%,rgba(255,255,255,.05));
+}
+button:hover,.primary:hover,.secondary:hover,.mode-button:hover,.tea button:hover{
+ transform:translateY(-2px);
+ box-shadow:0 10px 0 rgba(40,59,43,.14),0 16px 30px rgba(44,66,47,.2),inset 0 1px 0 rgba(255,255,255,.45);
+}
+button:active,.primary:active,.secondary:active,.mode-button:active,.tea button:active{
+ transform:translateY(2px);box-shadow:0 2px 0 rgba(40,59,43,.18),0 4px 10px rgba(44,66,47,.12),inset 0 2px 5px rgba(30,45,32,.12)
+}
+.hero-photo-art{display:block;min-height:0;aspect-ratio:4/4.5;border-radius:48% 48% 5px 5px;isolation:isolate;background:#c9b995;box-shadow:0 30px 70px rgba(65,49,29,.18),inset 0 0 0 1px rgba(255,255,255,.6)}
+.hero-photo-art:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(36,45,34,.02) 45%,rgba(36,45,34,.58) 100%);pointer-events:none}
+.hero-photo-art:after{content:"";position:absolute;z-index:2;inset:12px;border:1px solid rgba(255,250,230,.38);pointer-events:none}
+.hero-tea-photo{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.8) contrast(.98);transition:transform .8s cubic-bezier(.2,.8,.2,1),filter .5s}
+.hero-photo-art:hover .hero-tea-photo{transform:scale(1.035);filter:saturate(.96) contrast(1.02)}
+.photo-caption{position:absolute;z-index:3;left:24px;right:24px;bottom:24px;display:flex;justify-content:space-between;gap:10px;color:#fff9ed;font:9px Arial,sans-serif;letter-spacing:.15em;text-shadow:0 1px 8px rgba(0,0,0,.28)}
+#zenGarden,#dailyWisdom,#teaDiary{display:none!important}
+.pour-wrap{display:none!important}
+#ritual{margin-bottom:38px}
+#tea .tea-grid{margin-bottom:45px}
+#philosophy{padding-top:45px!important}
+.cards{padding-bottom:45px}
+.quote{padding:42px 20px}
+@media(max-width:700px){
+ .hero-photo-art{aspect-ratio:1/1.05;min-height:0}
+ .photo-caption{left:17px;right:17px;bottom:17px;font-size:8px}
+ .primary{padding:14px 16px}
+}
+@media(prefers-reduced-motion:reduce){.hero-tea-photo{transition:none}}
+
 </style>
 </head>
 <body id="top">
 <header><a class="brand" href="#top">茶　ПУТЬ ЧАЯ</a><nav><a href="#philosophy">Философия</a><a href="#tea">Чай</a><a href="#ritual">Ритуал</a></nav></header><div class="tea-settings"><label for="lightSelect">ОСВЕЩЕНИЕ <select id="lightSelect"><option value="morning">Утренний свет</option><option value="day">Дневной свет</option><option value="evening">Вечерний сумрак</option></select></label><button class="mode-button" id="rainToggle" type="button" aria-pressed="false">☂ Дождливый вечер</button><button class="mode-button" id="focusToggle" type="button" aria-pressed="false">◌ Полное погружение</button></div>
 <main>
 <section class="hero"><div class="hero-copy"><small class="eyebrow">Место тишины и вкуса</small><h1>Чайная<br><em>церемония</em></h1><p class="intro">Не торопиться. Замечать простое. Позволить теплу чашки вернуть вас в настоящий момент.</p><a class="hero-link" href="#ritual">ОТКРЫТЬ РИТУАЛ　↗</a></div>
-<div class="art"><div class="sun"></div><svg class="kettle" viewBox="0 0 440 410" role="img" aria-label="Чайник с поднимающимся паром"><defs><linearGradient id="pot" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#d49a70"/><stop offset=".48" stop-color="#b96f4e"/><stop offset="1" stop-color="#874b37"/></linearGradient></defs><g class="steam"><path d="M190 120 Q160 75 193 39"/><path class="s2" d="M230 105 Q260 70 235 25"/><path class="s3" d="M265 120 Q290 85 271 51"/></g><ellipse cx="220" cy="340" rx="132" ry="18" fill="#8c7056" opacity=".15"/><path d="M142 195 C75 158 69 225 104 270 Q125 293 149 267" fill="none" stroke="#8d523d" stroke-width="20"/><path d="M306 218 L380 177 L359 235 Q340 257 307 251Z" fill="#a75f43"/><path d="M133 188 Q220 153 307 190 L329 266 Q331 315 279 334 Q218 352 165 325 Q125 305 126 261Z" fill="url(#pot)"/><ellipse cx="220" cy="189" rx="88" ry="18" fill="#7c4937"/><ellipse cx="220" cy="185" rx="83" ry="15" fill="#c18a65"/><path d="M180 175 Q220 150 260 175Z" fill="#d6ac85"/><circle cx="220" cy="250" r="24" fill="none" stroke="#e4bd97"/><path d="M209 250 Q220 235 231 250 Q220 264 209 250Z" fill="#e4bd97"/></svg></div></section>
+<div class="art hero-photo-art"><img class="hero-tea-photo" src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&amp;fit=crop&amp;w=1400&amp;q=88" alt="Эстетичная чайная композиция с керамической посудой" fetchpriority="high"><div class="photo-caption"><span>ЧАЙНЫЙ РИТУАЛ</span><span>01 — ПРИСУТСТВИЕ</span></div></div>
 <div class="band">ПРИСУТСТВИЕ　✳　ПРОСТОТА　✳　ГАРМОНИЯ</div>
 <section id="philosophy" class="reveal" style="padding-top:70px"><div class="section-head"><small>Суть традиции</small><h2>Красота в простом</h2><p>Чайная церемония — это внимательное отношение к каждому движению, предмету и человеку рядом. Пусть несколько минут станут пространством, где не нужно спешить.</p></div></section>
 <section class="cards reveal" aria-label="Три шага чайного ритуала"><article class="card"><small>01 / ВОДА</small><h2>Подготовиться</h2><p>Почувствуйте тепло чайника, услышьте воду и оставьте спешку за порогом.</p></article><article class="card"><small>02 / ЛИСТ</small><h2>Заварить</h2><p>Дайте листьям раскрыться. Наблюдайте за цветом, ароматом и тихим движением пара.</p></article><article class="card"><small>03 / МОМЕНТ</small><h2>Присутствовать</h2><p>Сделайте небольшой глоток. Здесь не нужно ничего достигать — достаточно быть.</p></article></section>
