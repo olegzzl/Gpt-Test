@@ -382,9 +382,9 @@ const diaryKey="tea-ceremony-diary-v1",diaryEntries=document.getElementById("dia
  function applyLanguage(lang){
    language=lang;document.documentElement.lang=lang==="uk"?"uk":"ru";
    document.title=lang==="uk"?"Чайна церемонія — місце тиші":"Чайная церемония — место тишины";
-   const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+   const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode(node){return node.parentElement&&/^(SCRIPT|STYLE|NOSCRIPT)$/.test(node.parentElement.tagName)?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT}});
    const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
-   nodes.forEach(node=>{node.nodeValue=mapText(node.nodeValue)});
+   nodes.forEach(node=>{const value=mapText(node.nodeValue);if(value!==node.nodeValue)node.nodeValue=value;});
    document.querySelectorAll("[placeholder]").forEach(el=>{const value=el.getAttribute("placeholder");el.setAttribute("placeholder",lang==="uk"?(translations[value]||value):(reverse[value]||value))});
    document.querySelectorAll("[aria-label]").forEach(el=>{const value=el.getAttribute("aria-label");el.setAttribute("aria-label",lang==="uk"?(translations[value]||value):(reverse[value]||value))});
    ruButton.setAttribute("aria-pressed",String(lang==="ru"));ukButton.setAttribute("aria-pressed",String(lang==="uk"));
@@ -392,6 +392,11 @@ const diaryKey="tea-ceremony-diary-v1",diaryEntries=document.getElementById("dia
  }
  ruButton.addEventListener("click",()=>applyLanguage("ru"));ukButton.addEventListener("click",()=>applyLanguage("uk"));
  try{const saved=localStorage.getItem("tea-site-language");if(saved==="uk")applyLanguage("uk");else applyLanguage("ru")}catch(e){applyLanguage("ru")}
+ const observer=new MutationObserver(records=>{records.forEach(record=>{
+   if(record.type==="characterData"&&record.target.parentElement&&!/^(SCRIPT|STYLE|NOSCRIPT)$/.test(record.target.parentElement.tagName)){const node=record.target,value=mapText(node.nodeValue);if(value!==node.nodeValue)node.nodeValue=value;}
+   record.addedNodes&&record.addedNodes.forEach(added=>{if(added.nodeType===Node.TEXT_NODE){if(added.parentElement&&!/^(SCRIPT|STYLE|NOSCRIPT)$/.test(added.parentElement.tagName)){const value=mapText(added.nodeValue);if(value!==added.nodeValue)added.nodeValue=value;}}else if(added.nodeType===Node.ELEMENT_NODE&&!/^(SCRIPT|STYLE|NOSCRIPT)$/.test(added.tagName)){const walker=document.createTreeWalker(added,NodeFilter.SHOW_TEXT,{acceptNode(node){return node.parentElement&&/^(SCRIPT|STYLE|NOSCRIPT)$/.test(node.parentElement.tagName)?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT}});const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);nodes.forEach(node=>{const value=mapText(node.nodeValue);if(value!==node.nodeValue)node.nodeValue=value;});}});
+ });});
+ observer.observe(document.body,{subtree:true,childList:true,characterData:true});
  window.applyTeaLanguage=applyLanguage;
 })();
 </script></body></html>
