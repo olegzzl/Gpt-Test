@@ -409,7 +409,7 @@ const diaryKey="tea-ceremony-diary-v1",diaryEntries=document.getElementById("dia
    if(record.type==="characterData"&&record.target.parentElement&&!/^(SCRIPT|STYLE|NOSCRIPT)$/.test(record.target.parentElement.tagName)){const node=record.target,value=mapText(node.nodeValue);if(value!==node.nodeValue)node.nodeValue=value;}
    record.addedNodes&&record.addedNodes.forEach(added=>{if(added.nodeType===Node.TEXT_NODE){if(added.parentElement&&!/^(SCRIPT|STYLE|NOSCRIPT)$/.test(added.parentElement.tagName)){const value=mapText(added.nodeValue);if(value!==added.nodeValue)added.nodeValue=value;}}else if(added.nodeType===Node.ELEMENT_NODE&&!/^(SCRIPT|STYLE|NOSCRIPT)$/.test(added.tagName)){const walker=document.createTreeWalker(added,NodeFilter.SHOW_TEXT,{acceptNode(node){return node.parentElement&&/^(SCRIPT|STYLE|NOSCRIPT)$/.test(node.parentElement.tagName)?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT}});const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);nodes.forEach(node=>{const value=mapText(node.nodeValue);if(value!==node.nodeValue)node.nodeValue=value;});}});
  });});
- observer.observe(document.body,{subtree:true,childList:true,characterData:true});
+ observer.observe(document.body,{subtree:true,childList:true});
  window.applyTeaLanguage=applyLanguage;
 })();
 </script></body></html>
